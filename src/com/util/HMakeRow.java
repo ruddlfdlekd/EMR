@@ -1,9 +1,8 @@
 package com.util;
 
-public class MakeRow {
+public class HMakeRow {
 	private int startRow;
 	private int lastRow;
-	private String hkind;
 	private String kind;
 	private String search;
 	
@@ -19,27 +18,18 @@ public class MakeRow {
 	public void setLastRow(int lastRow) {
 		this.lastRow = lastRow;
 	}
+	
 	public String getKind() {
 		return kind;
 	}
+	
 	public void setKind(String kind) {
 		if(kind==null) {
-			this.kind="title";
+			this.kind="p_name";
 		}else {
 			this.kind = kind;
 		}
 	}
-	
-	public String getHkind() {
-		return hkind;
-	}
-	public void setHkind(String hkind) {
-		if(hkind==null) {
-			this.kind="w_num";
-		}
-		this.hkind = hkind;
-	}
-	
 	
 	public String getSearch() {
 		return search;

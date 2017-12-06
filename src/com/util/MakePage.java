@@ -20,6 +20,12 @@ public class MakePage {
 		return makeRow;
 	}
 	
+	public HMakeRow getMakeRow(HMakeRow hmakeRow) {
+		hmakeRow.setStartRow((curPage-1)*perPage+1);
+		hmakeRow.setLastRow(curPage*perPage);
+		return hmakeRow;
+	}
+	
 	
 	//페이징
 	public Pageing pageing() {

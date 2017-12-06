@@ -75,7 +75,6 @@ public class AdminController extends HttpServlet {
 		String uri = request.getServletPath();
 		ActionFoward actionFoward=null;
 		Action action=null;
-		System.out.println(uri);
 		action= (Action)command.get(uri);
 		actionFoward = action.doProcess(request, response);
 		if(actionFoward.isCheck()) {
