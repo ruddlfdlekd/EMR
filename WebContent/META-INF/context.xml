@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<Resource 
+maxWait="-1" 
+maxIdle="10" 
+maxActive="20" 
+username="EMR" 
+password="EMR" 
+url="jdbc:oracle:thin:@192.168.20.45:1521:xe"
+driverClassName="oracle.jdbc.driver.OracleDriver" auth="Container"
+name="jdbc/emr" 
+type="javax.sql.DataSource" />
+</Context>
