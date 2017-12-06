@@ -48,7 +48,6 @@ public class AdminController extends HttpServlet {
 			Iterator<Object> it = prop.keySet().iterator();
 			while(it.hasNext()) {
 				String key = (String)it.next();
-				System.out.println(key);
 				String value= (String)prop.get(key);
 				Class cls = Class.forName(value);
 				Object ins = cls.newInstance();
@@ -76,6 +75,7 @@ public class AdminController extends HttpServlet {
 		String uri = request.getServletPath();
 		ActionFoward actionFoward=null;
 		Action action=null;
+		System.out.println(uri);
 		action= (Action)command.get(uri);
 		actionFoward = action.doProcess(request, response);
 		if(actionFoward.isCheck()) {
@@ -85,7 +85,6 @@ public class AdminController extends HttpServlet {
 			view.forward(request, response);
 			
 		}else {
-			System.out.println("asdf");
 			response.sendRedirect(actionFoward.getPath());
 			
 		}

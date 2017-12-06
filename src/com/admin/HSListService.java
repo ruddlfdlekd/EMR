@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.action.Action;
 import com.action.ActionFoward;
 
-public class HSListService2 implements Action {
+public class HSListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
