@@ -1,5 +1,7 @@
 package com.util;
 
+import com.md.MMakeRow;
+
 public class MakePage {
 	private int curPage;
 	private int totalCount;
@@ -20,6 +22,13 @@ public class MakePage {
 		return makeRow;
 	}
 	
+	
+	
+	public MMakeRow getMakeRow(MMakeRow mmakeRow) {
+		mmakeRow.setStartRow((curPage-1)*perPage+1);
+		mmakeRow.setLastRow(curPage*perPage);
+		return mmakeRow;
+	}
 	
 	//페이징
 	public Pageing pageing() {

@@ -14,7 +14,7 @@ public class SmemberDAO {
 		st.setInt(1, smemberDTO.getS_num());
 		st.setString(2, smemberDTO.getS_pw());
 		ResultSet rs = st.executeQuery();
-		
+	
 		if(rs.next()) {
 		smemberDTO.setS_job(rs.getInt("s_job"));
 		smemberDTO.setS_birth(rs.getDate("s_birth"));
