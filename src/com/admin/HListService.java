@@ -1,5 +1,6 @@
 package com.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +10,12 @@ import com.action.Action;
 import com.action.ActionFoward;
 import com.hospital.HPmemberDAO;
 import com.hospital.HPmemberDTO;
+import com.member.SmemberDTO;
 import com.util.HMakeRow;
 import com.util.MakePage;
 import com.util.Pageing;
 
-public class HPListService implements Action {
+public class HListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -22,11 +24,13 @@ public class HPListService implements Action {
 		int curPage=1;
 		try {
 			curPage= Integer.parseInt(request.getParameter("curPage"));
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
 	
 		HMakeRow hmakeRow = new HMakeRow();
+		hmakeRow.setTt(request.getParameter("tt"));
 		hmakeRow.setKind(request.getParameter("kind"));
 		hmakeRow.setSearch(request.getParameter("search"));
 		
@@ -34,14 +38,21 @@ public class HPListService implements Action {
 		int totalCount;
 	
 		try {	
-			
+	
 			totalCount = hpmemberDAO.getTotalCount(hmakeRow);
 			MakePage makePage = new MakePage(curPage, totalCount);
 			hmakeRow=makePage.getMakeRow(hmakeRow);
 			List<HPmemberDTO> ar = hpmemberDAO.SelectList(hmakeRow);
+			if(hmakeRow.getTt().equals("ward")) {
+			actionFoward.setPath("../WEB-INF/view/admin/adminHPList.jsp");
+			
+			}
+			else {
+			actionFoward.setPath("../WEB-INF/view/admin/adminHSList.jsp");
+			}
 			//페이징 처리
-			System.out.println("12346");
 			Pageing pageing = makePage.pageing();
+			
 			
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageing);
@@ -54,9 +65,8 @@ public class HPListService implements Action {
 		}
 		
 		//전송
-		
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/admin/adminHPList.jsp");
+	
 		
 		
 		

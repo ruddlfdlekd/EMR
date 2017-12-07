@@ -12,17 +12,19 @@ public class HPmemberDAO {
 	
 	public List<HPmemberDTO> SelectList(HMakeRow hmakeRow) throws Exception{
 		Connection con = DBConnector.getConnect();
+		List<HPmemberDTO> ar = new ArrayList<>();
+		HPmemberDTO hpmemberDTO = new HPmemberDTO();
+
+		if(hmakeRow.getTt().equals("ward")) {
 		String sql ="select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from ward where "+hmakeRow.getKind()+" like ? order by w_num asc) N) "
+				+ "(select * from "+hmakeRow.getTt()+" where "+hmakeRow.getKind()+" like ? order by w_num asc) N) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+hmakeRow.getSearch()+"%");
 		st.setInt(2, hmakeRow.getStartRow());
 		st.setInt(3, hmakeRow.getLastRow());
 		ResultSet rs = st.executeQuery();
-		HPmemberDTO hpmemberDTO = new HPmemberDTO();
-		List<HPmemberDTO> ar = new ArrayList<>();
 		while(rs.next()) {
 		hpmemberDTO.setW_num(rs.getInt("w_num"));
 		hpmemberDTO.setW_rnum(rs.getInt("w_rnum"));
@@ -33,15 +35,42 @@ public class HPmemberDAO {
 		hpmemberDTO.setS_num(rs.getInt("s_num"));
 		hpmemberDTO.setS_name(rs.getString("s_name"));
 		hpmemberDTO.setP_date(rs.getDate("p_date"));
-		ar.add(hpmemberDTO);
+			ar.add(hpmemberDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
+		}
+		else {
+			String sql ="select * from "
+					+ "(select rownum R, N.* from "
+					+ "(select * from "+hmakeRow.getTt()+" where "+hmakeRow.getKind()+" like ? order by p_sdate asc) N) "
+					+ "where R between ? and ?";
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, "%"+hmakeRow.getSearch()+"%");
+			st.setInt(2, hmakeRow.getStartRow());
+			st.setInt(3, hmakeRow.getLastRow());
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				hpmemberDTO.setP_num(rs.getInt("p_num"));
+				hpmemberDTO.setP_name(rs.getString("p_name"));
+				hpmemberDTO.setS_num(rs.getInt("s_num"));
+				hpmemberDTO.setS_name(rs.getString("s_name"));
+				hpmemberDTO.setP_sdate(rs.getDate("p_sdate"));
+				ar.add(hpmemberDTO);
+			}
+			DBConnector.disConnect(rs, st, con);
+		}
+
 		return ar;
 	}
 	
+	
+	
+	
+	
+	
 	public int getTotalCount(HMakeRow hmakeRow)throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="select nvl(count(*),0) from ward where "+hmakeRow.getKind()+" like ?";
+		String sql ="select nvl(count(*),0) from "+hmakeRow.getTt()+" where "+hmakeRow.getKind()+" like ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+hmakeRow.getSearch()+"%");
 		ResultSet rs = st.executeQuery();
@@ -52,4 +81,10 @@ public class HPmemberDAO {
 		
 		return totalCount;
 	}
+	
+	
+	
+	
+	
+	
 }

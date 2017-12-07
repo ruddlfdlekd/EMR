@@ -5,7 +5,14 @@ public class HMakeRow {
 	private int lastRow;
 	private String kind;
 	private String search;
+	private String tt;
 	
+	public String getTt() {
+		return tt;
+	}
+	public void setTt(String tt) {
+		this.tt = tt;
+	}
 	public int getStartRow() {
 		return startRow;
 	}

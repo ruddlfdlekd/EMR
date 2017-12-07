@@ -75,7 +75,12 @@ public class MemberController extends HttpServlet {
 		String uri = request.getServletPath();
 		ActionFoward actionFoward=null;
 		Action action=null;
+		
+		if(uri.charAt(1)=='a')
+			uri="/member"+uri.substring(6);
+		
 		action= (Action)command.get(uri);
+
 		actionFoward = action.doProcess(request, response);
 		if(actionFoward.isCheck()) {
 			

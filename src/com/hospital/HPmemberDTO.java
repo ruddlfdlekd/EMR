@@ -12,7 +12,14 @@ private int s_num;
 private String s_name;
 private String p_sung;
 private Date p_date;
+private Date p_sdate;
 
+public Date getP_sdate() {
+	return p_sdate;
+}
+public void setP_sdate(Date p_sdate) {
+	this.p_sdate = p_sdate;
+}
 public Date getP_date() {
 	return p_date;
 }

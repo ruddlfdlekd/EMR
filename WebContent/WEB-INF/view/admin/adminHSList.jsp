@@ -9,28 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-	$(function(){
-		
-		var kind='${make.kind}';
-		$(".kind").each(function(){
-			if($(this).val()==kind){
-				$(this).attr("selected", true);
-			}
-		});
-		
-		
-		
-		$(".list").click(function(){
-			var cur = $(this).attr("title");
-			document.frm.curPage.value=cur;
-			document.frm.submit();
-		});
-	});
-</script>
-
 </head>
 <body>
 <%@ include file="../../temp/header.jsp" %>
@@ -38,11 +16,11 @@
 	<div>
 		<form name="frm" action="./adminHPList.admin">
 			<input type="hidden" name="curPage">
-			<input type="hidden" name="tt" value="ward">
+			<input type="hidden" name="tt" value="h_list">
 			<select name="kind">
-				<option class="kind" value="w_num">병동</option>
-				<option class="kind" value="w_rnum">병동호수</option>
 				<option class="kind" value="p_num">환자번호</option>
+				<option class="kind" value="p_name">환자이름</option>
+				<option class="kind" value="s_num">주치의번호</option>
 			</select>
 			<input type="text" name="search" value="${make.search}">
 			<button>Search</button>
@@ -51,29 +29,20 @@
 	
 	<table>
 		<tr>
-			<td>병동</td>
-			<td>병동호수</td>
-			<td>최대인원</td>
+			<td>신청날짜</td>
 			<td>환자번호</td>
 			<td>환자이름</td>
-			<td>환자성별</td>
 			<td>주치의번호</td>
 			<td>주치의이름</td>
-			<td>입원날짜</td>
 		</tr>
 		
 		<c:forEach items="${list}" var="i">
 			<tr>
-				<td>${i.w_num}</td>
-				<td>${i.w_rnum} </td>
-				<td>${i.w_rmax} </td>
-				<td>${i.p_num} </td>
-				<td><a href="">${i.p_name}</a></td>
-				<td>${i.p_sung} </td>
+				<td>${i.p_sdate} </td>
+				<td>${i.p_num}</td>
+				<td>${i.p_name} </td>
 				<td>${i.s_num} </td>
 				<td>${i.s_name} </td>
-				<td>${i.p_date} </td>
-
 			</tr>
 		</c:forEach>
 	</table>
@@ -90,9 +59,3 @@
 	</c:if>
 </body>
 </html>
-
-
-
-
-
-
