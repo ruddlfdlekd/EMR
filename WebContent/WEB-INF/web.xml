@@ -62,6 +62,19 @@
   </servlet-mapping>
   
   
+  <servlet>
+  <servlet-name>md</servlet-name>
+  <servlet-class>com.control.mdController</servlet-class>
+  <init-param>
+  <param-name>property</param-name>
+  <param-value>md.properties</param-value>
+  </init-param>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>md</servlet-name>
+  <url-pattern>*.md</url-pattern>
+  </servlet-mapping>
+  
  
   
 </web-app>
