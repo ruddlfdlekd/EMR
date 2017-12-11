@@ -20,18 +20,25 @@ public class MDListService implements Action {
 		//curpage
 		int curPage=1;
 		try {
-			curPage=Integer.parseInt(request.getParameter("curPage"));
+			String cpage = request.getParameter("curPage");
+			if ( cpage == null || cpage.equals("") ) {
+				cpage="1";
+			}
+			System.out.println("cpager : " + cpage);
+			curPage=Integer.parseInt(cpage);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
 	MMakeRow mmakeRow = new MMakeRow();
 	mmakeRow.setKind(request.getParameter("kind"));
 	mmakeRow.setSearch(request.getParameter("search"));
+	System.out.println("kind : " + mmakeRow.getKind());
+	System.out.println("search : " + mmakeRow.getSearch());
 	MdDAO mdDAO = new MdDAO();
 	int totalCount;
 	try {
-		
 		totalCount=mdDAO.getTotalCount(mmakeRow);
 		MakePage makePage = new MakePage(curPage, totalCount);
 		mmakeRow=makePage.getMakeRow(mmakeRow);
@@ -43,11 +50,12 @@ public class MDListService implements Action {
 		request.setAttribute("page", pageing);
 		request.setAttribute("make", mmakeRow);
 	} catch (Exception e) {
+		e.printStackTrace();
 		// TODO: handle exception
 	}
 		// 전송
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../../WEB-INF/view/md/MDList.jsp");
+		actionFoward.setPath("../WEB-INF/view/md/MDList.jsp");
 		return actionFoward;
 	}
 

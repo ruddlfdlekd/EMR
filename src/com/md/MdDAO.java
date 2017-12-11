@@ -11,7 +11,7 @@ import java.util.List;
 public class MdDAO {
 public int getTotalCount(MMakeRow mmakeRow) throws Exception{
 	Connection con =DBConnector.getConnect();
-	String sql ="select nvl(count(num), 0) from md where "+ mmakeRow.getKind()+ " like ?";
+	String sql ="select nvl(count(M_NUM), 0) from md where "+ mmakeRow.getKind()+ " like ?";
 	PreparedStatement st = con.prepareStatement(sql);
 	st.setString(1, "%"+mmakeRow.getSearch()+"%");
 	ResultSet rs = st.executeQuery();
@@ -27,7 +27,7 @@ public ArrayList<MdDTO> selectList(MMakeRow mmakeRow) throws Exception{
 Connection con = DBConnector.getConnect();
 String sql ="select * from "
 		+ "(select rownum R, N.* from "
-		+ "(select * from md where "+mmakeRow.getKind()+" like ? order by num desc) N) "
+		+ "(select * from md where "+mmakeRow.getKind()+" like ? order by M_NUM desc) N) "
 		+ "where R between ? and ?";
 PreparedStatement st = con.prepareStatement(sql);
 st.setString(1, "%"+mmakeRow.getSearch()+"%");

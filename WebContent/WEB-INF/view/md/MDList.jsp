@@ -21,7 +21,7 @@ $(function(){
 	
 	
 	$(".list").click(function(){
-	var cur = $(this).attr("m_name");	
+	var cur = $(this).attr("m_num");	
 	document.frm.curPage.value=cur;
 	document.frm.submit();
 	});
@@ -30,15 +30,15 @@ $(function(){
 </script>
 </head>
 <body>
-<h1>${board}</h1>
+<h1>약품재고페이지</h1>
 <div>
-<form name="frm" action="./mdMDList.md">
+<form name="frm" action="./MDList.md">
 <input type="hidden" name="curPage">
 <select name="kind">
 <option class="kind" value="m_num">약품번호</option>
 <option class="kind" value="m_name">약품이름</option>
 <option class="kind" value="m_q">약품수량</option>
-<option class="kind" value="m_mf">약품금액</option>
+<option class="kind" value="m_mf">약품회사</option>
 </select>
 <input type="text" name="search" value="${make.search}">
 <button>Search</button>
@@ -49,12 +49,12 @@ $(function(){
 <td>약품번호</td>
 <td>약품이름</td>
 <td>약품수량</td>
-<td>약품금액</td>
+<td>약품회사</td>
 </tr>
 <c:forEach items="${list}" var="i">
 <tr>
 <td>${i.m_num}</td>
-<td><a href="">${i.m_name}</a></td>
+<td>${i.m_name}</td>
 <td>${i.m_q}</td>
 <td>${i.m_mf}</td>
 </tr>
@@ -67,7 +67,7 @@ $(function(){
 </c:if>
 
 <c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-<input type="button" class="list" title="${i}" value="${i} " >
+<input type="button" class="list" title="${i}" value="${i}" m_num="${i}" >
 </c:forEach>
 
 <c:if test="${page.curBlock lt page.totalBlock }">

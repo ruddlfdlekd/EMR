@@ -10,9 +10,9 @@
 <%@ include file="../../temp/header.jsp" %>
 
 <h1>약품페이지</h1>
-<a href="../md/mdMDBList.md"><button>약품발주리스트</button></a>
-<a href="../md/mdMDList.md"><button>약품재고</button></a>
-<a href="../md/mdMDPList.md"><button>약품처방리스트</button></a>
+<a href="../md/MDBList.md"><button>약품발주리스트</button></a>
+<a href="../md/MDList.md"><button>약품재고</button></a>
+<a href="../md/MDPList.md"><button>약품처방리스트</button></a>
 
 </body>
 </html>
