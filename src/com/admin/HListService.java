@@ -1,6 +1,6 @@
 package com.admin;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,6 @@ import com.action.Action;
 import com.action.ActionFoward;
 import com.hospital.HPmemberDAO;
 import com.hospital.HPmemberDTO;
-import com.member.SmemberDTO;
 import com.util.HMakeRow;
 import com.util.MakePage;
 import com.util.Pageing;

@@ -31,9 +31,14 @@ public class HMakeRow {
 	}
 	
 	public void setKind(String kind) {
-		if(kind==null) {
-			this.kind="p_name";
-		}else {
+		
+		if(kind==null&&tt.equals("ward")) {
+			this.kind="w_num";
+		}
+		else if(kind==null&&tt.equals("h_list")){
+			this.kind="p_num";
+		}
+		else {
 			this.kind = kind;
 		}
 	}

@@ -13,8 +13,16 @@
 
 <script type="text/javascript">
 	$(function(){
-		
+		var ah = $(".ah");
+		for(var i=0; i<ah.length; i++){
+			ah[i].addEventListener("click", function(e) {
+				window.open(this.href, "", "top=200, left=300, width=400, height=300");
+				 e.preventDefault(); 
+			});
+		}
+
 		var kind='${make.kind}';
+		
 		$(".kind").each(function(){
 			if($(this).val()==kind){
 				$(this).attr("selected", true);
@@ -38,7 +46,7 @@
 	<div>
 		<form name="frm" action="./adminHPList.admin">
 			<input type="hidden" name="curPage">
-			<input type="hidden" name="tt" value="ward">
+			<input type="hidden" name="tt" value="ward"> 
 			<select name="kind">
 				<option class="kind" value="w_num">병동</option>
 				<option class="kind" value="w_rnum">병동호수</option>
@@ -68,7 +76,7 @@
 				<td>${i.w_rnum} </td>
 				<td>${i.w_rmax} </td>
 				<td>${i.p_num} </td>
-				<td><a href="">${i.p_name}</a></td>
+				<td><a href="adminHPView.admin?p_num=${i.p_num}" class="ah">${i.p_name}</a></td>
 				<td>${i.p_sung} </td>
 				<td>${i.s_num} </td>
 				<td>${i.s_name} </td>
