@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(function(){
 var kind ='${make.kind}';
 $(".kind").each(function(){
 	if($(this).val()==kind){
@@ -16,7 +17,7 @@ $(".kind").each(function(){
 	}
 	});
 $(".list").click(function(){
-	var cur = $(this).attr("m_num");
+	var cur = $(this).attr("m_oq");
 	document.frm.curPage.value=cur;
 	document.frm.submit();
 });
@@ -65,7 +66,7 @@ $(".list").click(function(){
 </c:if>
 
 <c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-<input type="button" class="list" title="${i}" value="${i}" m_num="${i}" >
+<input type="button" class="list" title="${i}" value="${i}" m_oq="${i}" >
 </c:forEach>
 
 <c:if test="${page.curBlock lt page.totalBlock }">

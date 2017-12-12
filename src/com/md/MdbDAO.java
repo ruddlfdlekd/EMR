@@ -10,7 +10,7 @@ import com.util.DBConnector;
 public class MdbDAO {
 public int getTotalCount(MdbMakeRow mdbMakeRow)throws Exception{
 	Connection con = DBConnector.getConnect();
-	String sql = "select nvl(count(M_NUM),0)from mdb where "+mdbMakeRow.getKind()+" like ?";
+	String sql = "select nvl(count(M_OQ),0)from mdb where "+mdbMakeRow.getKind()+" like ?";
 	PreparedStatement st = con.prepareStatement(sql);
 	st.setString(1, "%"+mdbMakeRow.getSearch()+"%");
 	ResultSet rs = st.executeQuery();
@@ -25,7 +25,7 @@ public ArrayList<MdbDTO> selectList(MdbMakeRow mdbMakeRow) throws Exception{
 	Connection con = DBConnector.getConnect();
 	String sql="select * from"
 			+ "(select rownum R,N.* from"
-			+ "(select * from mdb where "+mdbMakeRow.getKind()+" like? order by M_NUM desc)N)"
+			+ "(select * from mdb where "+mdbMakeRow.getKind()+" like? order by M_OQ desc)N)"
 			+ "where R between ? and ?";
 PreparedStatement st = con.prepareStatement(sql);
 st.setString(1, "%"+mdbMakeRow.getSearch()+"%");
