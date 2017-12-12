@@ -17,7 +17,7 @@ $(".kind").each(function(){
 	}
 	});
 $(".list").click(function(){
-	var cur = $(this).attr("m_oq");
+	var cur = $(this).attr("m_num");
 	document.frm.curPage.value=cur;
 	document.frm.submit();
 });
@@ -66,7 +66,7 @@ $(".list").click(function(){
 </c:if>
 
 <c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-<input type="button" class="list" title="${i}" value="${i}" m_oq="${i}" >
+<input type="button" class="list" title="${i}" value="${i}" m_num="${i}" >
 </c:forEach>
 
 <c:if test="${page.curBlock lt page.totalBlock }">

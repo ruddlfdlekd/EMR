@@ -22,7 +22,7 @@ public String getKind() {
 }
 public void setKind(String kind) {
 	if(kind==null) {
-	this.kind = "m_oq";
+	this.kind = "m_num";
 }else {
 	this.kind =kind;
 }
