@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.util.DBConnector;
-import com.util.MakeRow;
+import com.util.MMakeRow;
+
 import java.util.ArrayList;
-import java.util.List;
+
 public class MdDAO {
 public int getTotalCount(MMakeRow mmakeRow) throws Exception{
 	Connection con =DBConnector.getConnect();

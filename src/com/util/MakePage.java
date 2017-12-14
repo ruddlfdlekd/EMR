@@ -1,7 +1,7 @@
 package com.util;
 
-import com.md.MMakeRow;
-import com.md.MdbMakeRow;
+import com.util.MMakeRow;
+import com.util.MdbMakeRow;
 
 public class MakePage {
 	private int curPage;
@@ -35,6 +35,13 @@ public class MakePage {
 		mdbMakeRow.setLastRow(curPage*perPage);
 		return mdbMakeRow;
 	}
+	public MdpMakeRow getMakeRow(MdpMakeRow mdpMakeRow) {
+		mdpMakeRow.setStartRow((curPage-1)*perPage+1);
+		mdpMakeRow.setLastRow(curPage*perPage);
+		return mdpMakeRow;
+	}
+	
+	
 	//페이징
 	public Pageing pageing() {
 		Pageing pageing = new Pageing();

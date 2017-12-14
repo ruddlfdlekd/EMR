@@ -1,15 +1,15 @@
-package com.md;
+package com.util;
 
 public class MdbMakeRow {
-private int startRow;
+private int StartRow;
 private int lastRow;
 private String kind;
 private String search;
 public int getStartRow() {
-	return startRow;
+	return StartRow;
 }
 public void setStartRow(int startRow) {
-	this.startRow = startRow;
+	StartRow = startRow;
 }
 public int getLastRow() {
 	return lastRow;
@@ -24,7 +24,7 @@ public void setKind(String kind) {
 	if(kind==null) {
 	this.kind = "m_num";
 }else {
-	this.kind =kind;
+	this.kind= kind;
 }
 }
 public String getSearch() {
@@ -38,4 +38,3 @@ public void setSearch(String search) {
 }
 }
 }
-

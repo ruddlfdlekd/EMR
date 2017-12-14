@@ -38,7 +38,7 @@ $(function(){
 <option class="kind" value="m_num">약품번호</option>
 <option class="kind" value="m_name">약품이름</option>
 <option class="kind" value="m_q">약품수량</option>
-<option class="kind" value="m_mf">약품회사</option>
+<option class="kind" value="m_mf">약품금액</option>
 </select>
 <input type="text" name="search" value="${make.search}">
 <button>Search</button>
@@ -49,7 +49,7 @@ $(function(){
 <td>약품번호</td>
 <td>약품이름</td>
 <td>약품수량</td>
-<td>약품회사</td>
+<td>약품금액</td>
 </tr>
 <c:forEach items="${list}" var="i">
 <tr>
