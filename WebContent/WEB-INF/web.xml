@@ -61,7 +61,18 @@
     <url-pattern>*.admin</url-pattern>
   </servlet-mapping>
   
-  
+    <servlet>
+  <servlet-name>treatment</servlet-name>
+  <servlet-class>com.control.TreatmentController</servlet-class>
+  <init-param>
+  <param-name>property</param-name>
+  <param-value>treatment.properties</param-value>
+  </init-param>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>treatment</servlet-name>
+  <url-pattern>*.treatment</url-pattern>
+  </servlet-mapping>
  
   
 </web-app>

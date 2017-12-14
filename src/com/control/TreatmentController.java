@@ -20,79 +20,73 @@ import com.action.Action;
 import com.action.ActionFoward;
 
 /**
- * Servlet implementation class MemberController
+ * Servlet implementation class TreatmentController
  */
-@WebServlet("/MemberController")
-public class MemberController extends HttpServlet {
+@WebServlet("/TreatmentController")
+public class TreatmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private Map<String, Object> command;
+	private Map<String, Object> command;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberController() {
+    public TreatmentController() {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
     @Override
-    public void init(ServletConfig config) throws ServletException{
-   
-    	command = new HashMap<>();
+    public void init(ServletConfig config) throws ServletException {
+    	// TODO Auto-generated method stub
+    	//super.init(config);
+    	command=new HashMap<>();
     	String fileName = config.getInitParameter("property");
     	String filePath = config.getServletContext().getRealPath("WEB-INF/property");
-    	FileInputStream fi= null;
+    	FileInputStream fi = null;
     	Properties prop = new Properties();
     	try {
-			fi = new FileInputStream(new File(filePath, fileName));
-			prop.load(fi);
-			Iterator<Object> it = prop.keySet().iterator();
-			while(it.hasNext()) {
-				String key = (String)it.next();
-				String value= (String)prop.get(key);
-				Class cls = Class.forName(value);
-				Object ins = cls.newInstance();
-				command.put(key, ins);
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				fi.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-    	
+    		fi = new FileInputStream(new File(filePath, fileName));
+    		prop.load(fi);
+    		Iterator<Object> it = prop.keySet().iterator();
+    		while(it.hasNext()) {
+    			String key = (String)it.next();
+    			String value = (String)prop.get(key);
+    			Class cls = Class.forName(value);
+    			Object ins = cls.newInstance();
+    			command.put(key, ins);
+    		}
+    	} catch(Exception e) {
+    		
+    	} finally {
+    		try {
+    			fi.close();
+    		} catch(IOException e) {
+    			
+    		}
+    	}
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String uri = request.getServletPath();
-		ActionFoward actionFoward=null;
+
+		ActionFoward actionFoward = null;
+	
 		Action action=null;
-		
-		if(uri.charAt(1)=='a')
-			uri="/member"+uri.substring(6);
-		else if(uri.charAt(1)=='t')
-			uri="/member"+uri.substring(10);
-		
-		action= (Action)command.get(uri);
+	
+		action = (Action)command.get(uri);
 
 		actionFoward = action.doProcess(request, response);
 		if(actionFoward.isCheck()) {
-			
 			RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
-			
 			view.forward(request, response);
-			
-		}else {
+		} else {
+			actionFoward.setPath("../WEB-INF/view/member/memberPage1.jsp");
 			response.sendRedirect(actionFoward.getPath());
-			
 		}
 	}
 

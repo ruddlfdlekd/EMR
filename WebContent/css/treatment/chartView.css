@@ -1,0 +1,96 @@
+@charset "UTF-8";
+* {
+	padding:0;
+	margin:0;
+}
+
+#all {
+	margin:0 auto;
+	margin-top:80px;
+	border:1px solid black;
+	width:50%;
+}
+
+#p_info {
+	
+	width:100%;
+	height:100px;
+}
+
+#p_treatcontents {
+	
+	width:100%;
+	height:500px;
+}
+
+#p_image {
+	border:1px solid darkorange;
+	width:100%;
+	height:150px;
+}
+
+#diagnosis_treatment {
+	border:1px solid red;
+	width:100%;
+	height:248px;
+}
+
+#precription {
+	border:1px solid darkviolet;
+	width:49.8%;
+	height:248px;
+	float:left;
+}
+
+#checkup {
+	border:1px solid blue;
+	width:49.7%;
+	height:248px;
+	float:left;
+}
+
+table {
+	border:1px solid black;
+	width:100%;
+	height:100px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+td {
+	border:1px solid black;
+	text-align: center;
+}
+
+#leftclick {
+	float:left;
+	display:inline-block;
+	width:50px;
+	height:127px;
+}
+
+#rightclick {
+	float:right;
+	display:inline-block;
+	width:50px;
+	height:127px;
+}
+
+#left_btn {
+	
+	width:50px;
+	height:127px;
+}
+
+#right_btn {
+	
+	width:50px;
+	height:127px;
+}
+
+#t_btn {
+	width:61px;
+	hegiht:19px;
+	margin:0 auto;
+	margin-top:30px;
+}

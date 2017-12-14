@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+* {
+	margin:0;
+	padding:0;	
+}
+
+#all {
+	margin:0 auto;
+	width:40%;
+}
+
+#p_info {
+	width:100%;
+}
+
+#p_record {
+	width:100%;
+}
+
+#p_btn {
+	width:100%;
+}
+
+
+table {
+	border:1px solid black;
+	width:100%;
+}
+
